@@ -1,0 +1,21 @@
+<!--index.wxml-->
+<view class="container_x">
+  <scroll-view class='main_scroll' scroll-y="true" bindscrolltolower="lower" bindscrolltoupper="upper">
+    <swiper class="activity" bindtap='jumpToMap' indicator-dots="{{indicatorDots}}" circular="{{circular}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
+      <block wx:for="{{imgUrls}}">
+        <swiper-item>
+          <image src="{{item}}" class="slide-image" width="355" height="155" mode='widthFix' />
+        </swiper-item>
+      </block>
+    </swiper>
+
+    <view style='padding-top:50rpx;'>
+      <text class='text'></text>
+    </view>
+
+  </scroll-view>
+  <view>
+    <loading hidden="{{hiddenLoading}}">请稍候</loading>
+  </view>
+
+</view>

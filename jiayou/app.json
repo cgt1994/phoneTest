@@ -1,0 +1,47 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/logs/logs",
+    "pages/main/main",
+    "pages/mine/mine",
+    "pages/service/service",
+    "pages/info/info",
+    "pages/orderdetail/orderdetail",
+    "pages/register/register",
+    "pages/task/task",
+    "pages/addTask/addTask",
+    "pages/orderlist/orderlist",
+    "pages/map/map",
+    "pages/deliverinfo/deliverinfo",
+    "pages/taskfinish/taskfinish"
+  ],
+  "window": {
+    "backgroundTextStyle": "drak",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "WeChat",
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "selectedColor": "#1296db",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页",
+        "iconPath": "images/home_nor.png",
+        "selectedIconPath": "images/home_selected.png"
+      },
+      {
+        "pagePath": "pages/task/task",
+        "text": "任务",
+        "iconPath": "images/pay_nor.png",
+        "selectedIconPath": "images/pay_selected.png"
+      },
+      {
+        "pagePath": "pages/info/info",
+        "text": "我的",
+        "iconPath": "images/map_nor.png",
+        "selectedIconPath": "images/map_selected.png"
+      }
+    ]
+  }
+}

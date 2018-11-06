@@ -1,0 +1,29 @@
+<!--pages/deliverinfo/deliverinfo.wxml-->
+
+<view class="container_main">
+  <view class='row_style'>
+    <view class='column_style'>
+      <text>身份证正面</text>
+      <image style='width:100%' class="show-image" mode="aspectFit" src="{{idfront}}"></image>
+      <button style='height:60rpx:width:150rpx' size="mini" bindtap="uploadIdCardFront">上传</button>
+    </view>
+    <view class='column_style'>
+      <text>身份证背面</text>
+      <image style='width:100%' class="show-image" mode="aspectFit" src="{{idback}}"></image>
+      <button size="mini" bindtap="uploadIdCardBack">上传</button>
+    </view>
+  </view>
+  <view class='row_style'>
+    <view class='column_style'>
+      <text>驾驶证正面</text>
+      <image style='width:100%' class="show-image" mode="aspectFit" src="{{licensefrist}}"></image>
+      <button style='height:60rpx:width:150rpx' size="mini" bindtap="uploadLicenseFront">上传</button>
+    </view>
+    <view class='column_style'>
+      <text>驾驶证背面</text>
+      <image style='width:100%' class="show-image" mode="aspectFit" src="{{licensesencond}}"></image>
+      <button size="mini" bindtap="uploadLicenseBack">上传</button>
+    </view>
+  </view>
+  <button style='margin-top:10rpx' bindtap='apply' type='primary'>提交审核</button>
+</view>

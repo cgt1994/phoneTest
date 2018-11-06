@@ -1,0 +1,63 @@
+<!--pages/orderlist/orderlist.wxml-->
+<view class='contain'>
+  <view class="tab_con flexItem rowStyle">
+    <view class="view1 width20" bindtouchstart="catchtouchstart" bindtouchend="catchtouchend">
+      <scroll-view class="tableView" scroll-y="true" wx:if="{{items.length>0}}" wx:for="{{ items }}" wx:for-item="info">
+        <view class="flexItem rowStyle tableViewCellHeader marginTop10" catchtap="goDeatailEvent">
+          <view>
+          <image class="orderImage marginLeft12" src="../../images/dingdan.png"></image>
+          <label class="color54 fontSize12">订单编号: {{ info.orderNum }}</label>
+          </view>
+          <text class='state_text'>{{state}}</text>
+        </view>
+        <view class="flexItem rowStyle  personInfo" catchtap="goDeatailEvent">
+          <view class="flexItem rowStyle marginLeft12 centers">
+            <view class="color54 fontSize12">出发地 :</view>
+            <view style='margin-left:20rpx'> {{ info.startAddress }}</view>
+          </view>
+        </view>
+        <view class="flexItem rowStyle  personInfo" catchtap="goDeatailEvent">
+          <view class="flexItem rowStyle marginLeft12 centers">
+            <view class="color54 fontSize12">目的地 :</view>
+            <view style='margin-left:20rpx'> {{ info.endAddress }} </view>
+          </view>
+        </view>
+        <view class="flexItem rowStyle  personInfo" catchtap="goDeatailEvent">
+          <view class="flexItem rowStyle marginLeft12 centers">
+            <view class="color54 fontSize12">金额:</view>
+            <view class=' inner' style='margin-left:20rpx'>
+              <view> {{ info.unitPrice }} 元</view>
+              <view class="color54 fontSize14">单位：每公里每吨</view>
+            </view>
+          </view>
+        </view>
+        <!-- <view class="flexItem rowStyle  personInfo" catchtap="goDeatailEvent">
+          <view class="flexItem rowStyle marginLeft12 centers">
+            <view class="color54 fontSize12">重量:</view>
+            <view style='margin-left:20rpx'> {{ info.weight }} 吨</view>
+          </view>
+        </view> -->
+        <view class="flexItem rowStyle  personInfo" catchtap="goDeatailEvent">
+          <view class="flexItem rowStyle marginLeft12 centers">
+            <view class="color54 fontSize12">物品信息:</view>
+            <view style='margin-left:20rpx'> {{ info.goodsDesc }}</view>
+          </view>
+        </view>
+        <view wx:if="{{info.orderExpectDeliveryDateStr!=null}}" class="flexItem rowStyle  personInfo" catchtap="goDeatailEvent">
+          <view class="flexItem rowStyle marginLeft12  centers">
+            <view class="color54 fontSize12">期望送货时间:</view>
+            <view class="color54 fontSize12" style='margin-left:20rpx'> {{ info.orderExpectDeliveryDateStr }}</view>
+          </view>
+        </view>
+        <view wx:if="{{info.orderExpectArrivedDateStr!=null}}" class="flexItem rowStyle  personInfo" catchtap="goDeatailEvent">
+          <view class="flexItem rowStyle marginLeft12  centers">
+            <view class="color54 fontSize12">期望到达时间:</view>
+            <view class="color54 fontSize12" style='margin-left:20rpx'> {{ info.orderExpectArrivedDateStr }}</view>
+          </view>
+        </view>
+        <button type='primary' data-info='{{info}}'bindtap='toFinish' >去完成</button>
+    
+      </scroll-view>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,52 @@
+<!--pages/register.wxml-->
+<view class='main_contain'>
+  <radio-group class="radio-group" bindchange="registerRadioChange">
+    <radio value='driver' style=''>司机</radio>
+    <radio value='supplier' style=''>厂商</radio>
+
+  </radio-group>
+  <block wx:if="{{myType=='driver'}}">
+    <view class="model-card" style='margin-top:80rpx'>
+      <view class="phone_text" style='margin-left:30rpx'>手机</view>
+      <view class="modal-input" style='margin-left:20rpx;;width:550rpx'>
+        <input placeholder-class="input-name" type="number" maxlength="13" bindinput="inputPhoneNumber" class="input" placeholder="请输入手机"></input>
+      </view>
+    </view>
+    <!-- <view class="model-card" style='margin-top:80rpx'>
+      <view class="phone_text" style='margin-left:30rpx'>密码</view>
+      <view class="modal-input" style='margin-left:20rpx;;width:550rpx'>
+        <input placeholder-class="input-name" type="number" maxlength="13" bindinput="inputPassword" class="input" placeholder="请输入密码"></input>
+      </view>
+    </view> -->
+
+    <view class="model-card" style='margin-top:80rpx'>
+      <view class="phone_text" style='margin-left:30rpx'>验证码</view>
+      <view class="modal-input" style='margin-left:20rpx;width:200rpx'>
+        <input placeholder-class="input-name" type="number" maxlength="6" bindinput="intputVerifyCode" class="input" placeholder="请输入验证码"></input>
+      </view>
+      <button disabled='{{verifyabled}}' bindtap='getVerfiyCode'>获取验证码</button>
+    </view>
+
+  </block>
+  <block wx:if="{{myType=='supplier'}}">
+    <view class="model-card" style='margin-top:50rpx'>
+      <view class="phone_text" style='margin-left:10rpx'>公司名</view>
+      <view class="modal-input" style='margin-left:20rpx;;width:550rpx'>
+        <input placeholder-class="input-name"  maxlength="13" bindinput="inputSupplier" class="input" placeholder="请输入公司名"></input>
+      </view>
+    </view>
+    <view class="model-card" style='margin-top:50rpx'>
+      <view class="phone_text" style='margin-left:10rpx'>地址</view>
+      <view class="modal-input" style='margin-left:20rpx;width:550rpx'>
+        <input placeholder-class="input-name"  maxlength="20" bindinput="inputAddress" class="input" placeholder="请输入地址"></input>
+      </view>
+    </view>
+    <view class="model-card" style='margin-top:50rpx'>
+      <view class="phone_text" style='margin-left:10rpx '>联系电话</view>
+      <view class="modal-input" style='margin-left:20rpx;width:550rpx'>
+        <input placeholder-class="input-name" type="number" maxlength="20" bindinput="inputContactPhone" class="input" placeholder="请输入联系电话"></input>
+      </view>
+    </view>
+  </block>
+  <button type="primary" size="{{primarySize}}" loading="{{loading}}" plain="{{plain}}" style='margin-top:300rpx' disabled="{{disabled}}" bindtap="register"> 注册 </button>
+</view>

@@ -1,0 +1,36 @@
+<!--pages/addTask/addTask.wxml-->
+<view class='main'>
+  <view>
+    <van-cell-group>
+      <van-field value="{{ startName }}" bindchange="inputFromPlace" label="起点" required placeholder="请输入起始点" border="{{ false }}" icon="location" bind:click-icon="fromLocationClick" icon-class="icon_from" />
+      <van-field value="{{ startaddress }}" bindchange="inputFromName" type="textarea" autosize label="起点地址" placeholder="请输入详细地址" required border="{{ false }}" />
+      <van-field value="{{ endName }}" bindchange="inputtoPlace" label="终点" required placeholder="请输入终点" border="{{ false }}" bind:click-icon="toLocationClick" icon="location" icon-class="icon_to" />
+      <van-field value="{{ endaddress }}" bindchange="inputFromName" label="终点地址"  type="textarea" autosize placeholder="请输入详细地址" required border="{{ false }}" />
+      <van-field value="{{ password }}" bindchange="inputWeight" label="重量(吨)" placeholder="请输入重量" required border="{{ false }}" />
+      <van-field value="{{ password }}" bindchange="inputdistance" label="距离（公里）" placeholder="请输入距离" required border="{{ false }}" />
+      <van-field value="{{ password }}" bindchange="inputUnitPrice" tlabel="单价" placeholder="请输入单价（元/每公里每吨）" required border="{{ false }}" />
+      <van-field value="{{ password }}" bindchange="inputGoodDec" tlabel="物品信息" placeholder="请输入物品信息（如煤，石灰等）" required border="{{ false }}" />
+    </van-cell-group>
+  </view>
+  <view class='data_contain'>
+    <text>预计出发时间</text>
+    <picker mode="date" value="{{date}}" start="2018-01-01" end="2020-09-01" bindchange="bindDeliveryDateChange">
+      <view class="picker">
+        当前选择: {{deliverDate}}
+      </view>
+    </picker>
+
+  </view>
+  <view class='data_contain'>
+    <text>预计到达时间</text>
+    <picker mode="date" value="{{date}}" start="2018-01-01" end="2020-09-01" bindchange="bindArriveDateChange">
+      <view class="picker">
+        当前选择: {{arriveDate}}
+      </view>
+    </picker>
+  </view>
+
+  <button class='button' type="primary" bindtap='addTask'>提交</button>
+
+
+</view>

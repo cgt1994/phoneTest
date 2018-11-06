@@ -1,0 +1,22 @@
+<!--pages/main/main.wxml-->
+<view class='main_contain'>
+  <radio-group class="radio-group" bindchange="radiochange">
+    <radio value='gas' style=''>天然气</radio>
+    <radio value='petrol' style=''>石油</radio>
+        <radio value='newenerry' style=''>新能源</radio>
+  </radio-group>
+  <view class="model-card" style='margin-top:80rpx'>
+    <view class="phone_text" style='margin-left:30rpx' >卡号</view>
+    <view class="modal-input" style='margin-left:20rpx;width:550rpx'>
+      <input placeholder-class="input-name" type="number" maxlength="20" bindinput="inputChange" class="input" placeholder="请输入卡号"></input>
+    </view>
+  </view>
+   <view class="model-card"style='margin-top:80rpx'>
+    <view class="phone_text" style='margin-left:30rpx' >手机</view>
+    <view class="modal-input" style='margin-left:20rpx;;width:550rpx'>
+      <input placeholder-class="input-name" type="number" maxlength="13" bindinput="inputChange" class="input" placeholder="请输入手机"></input>
+    </view>
+  </view>
+  <button type="primary" size="{{primarySize}}" loading="{{loading}}" plain="{{plain}}" style='margin-top:300rpx'
+        disabled="{{disabled}}" bindtap="primary"> 去支付 </button>
+</view>

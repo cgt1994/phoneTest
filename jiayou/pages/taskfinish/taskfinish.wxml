@@ -1,0 +1,14 @@
+<view class="container_main">
+  <text>{{startName}}</text>
+  <text>{{endName}}</text>
+  <text>{{gooddec}}</text>
+
+  <view class='row_style' style='margin-top:20rpx'>
+    <view class='column_style'>
+      <text>请上传面单信息</text>
+      <image style='width:100%;height:200rpx' class="show-image" mode="aspectFit" src="{{src}}"></image>
+      <button style='height:60rpx:width:150rpx' size="mini" bindtap="uploadMd">上传</button>
+          </view>
+  </view>
+  <button type='primary' style='width:100%;margin-top:10rpx' bindtap='compelte'>提交</button>
+</view>

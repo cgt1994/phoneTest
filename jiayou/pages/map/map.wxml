@@ -1,0 +1,10 @@
+<!--pages/map/map.wxml-->
+<view class='map_contain'>
+  <map class='map_view' polyline='{{polylines}}' include-points='{{points}}' longitude='{{mylongitude}}' latitude='{{mylatitude}}' markers="{{markers}}" show-location='true'></map>
+  <view class='info'>
+    <image style='width:60rpx;height:60rpx' mode='scaleToFill' src='../../images/from_pic.png'> </image>
+    <text>起点</text>
+    <image style='margin-left:50rpx;width:60rpx;height:60rpx' mode='scaleToFill' src='../../images/to_pic.png'> </image>
+    <text>终点</text>
+  </view>
+</view>

@@ -1,0 +1,25 @@
+<!--pages/mine/mine.wxml-->
+<view class='contain_main'>
+  <map id='map' longitude="{{longitude}}" latitude="{{latitude}}" scale="14" controls="{{controls}}" bindcontroltap="controltap" markers="{{markers}}" bindmarkertap="markertap" polyline="{{polyline}}" circles="{{circles}}" bindregionchange="regionchange"
+    show-location style="width: 100%; height: 450rpx;"></map>
+  <scroll-view class='mine_contain'scroll-y="true" bindscrolltoupper="upper" bindscrolltolower="lower" bindscroll="scroll" scroll-top="450rpx" scroll-into-view="top">
+    <view id="top" style='margin-top:30rpx'>张明利轮胎销售部</view>
+    <view style='margin-top:30rpx'>库尔勒腾龙加油站</view>
+    <view style='margin-top:30rpx'>库尔勒孙浩峰轮胎销售店</view>
+    <view style='margin-top:30rpx'>库尔勒孙浩峰轮胎销售店</view>
+    <view style='margin-top:30rpx'>库尔勒孙浩峰轮胎销售店</view>
+    <view style='margin-top:30rpx'>库尔勒孙浩峰轮胎销售店</view>
+    <view style='margin-top:30rpx'>库尔勒孙浩峰轮胎销售店</view>
+    <view style='margin-top:30rpx'>库尔勒孙浩峰轮胎销售店</view>
+    <view style='margin-top:30rpx'>库尔勒孙浩峰轮胎销售店</view>
+    <view style='margin-top:30rpx'>库尔勒孙浩峰轮胎销售店</view>
+    <view style='margin-top:30rpx'>库尔勒孙浩峰轮胎销售店</view>
+    <view style='margin-top:30rpx'>库尔勒孙浩峰轮胎销售店</view>
+    <view style='margin-top:30rpx'>库尔勒孙浩峰轮胎销售店</view>
+    <view style='margin-top:30rpx'>库尔勒孙浩峰轮胎销售店</view>
+    <view style='margin-top:30rpx'>库尔勒孙浩峰轮胎销售店</view>
+    <view style='margin-top:30rpx'>库尔勒孙浩峰轮胎销售店</view>
+    <view style='margin-top:30rpx'>库尔勒孙浩峰轮胎销售店</view>
+    <view style='margin-top:30rpx'>库尔勒孙浩峰轮胎销售店</view>
+  </scroll-view>
+</view>
