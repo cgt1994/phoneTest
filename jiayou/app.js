@@ -114,6 +114,7 @@ App({
     userInfo: null,
     token: "",
     openId: null,
+    stauts:-1
 
   }
 })

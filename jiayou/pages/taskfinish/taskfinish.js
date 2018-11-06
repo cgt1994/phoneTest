@@ -118,7 +118,7 @@ Page({
       return
     }
     var parms=new Object()
-    parms.operateCode=4;
+    parms.operateCode=3;
     parms.orderCompleteUrl=orderUrl
     parms.orderNum = order.orderNum
     wx.showLoading({

@@ -48,6 +48,7 @@ Page({
       wx.hideLoading()
       console.log(res.data.result.idCardApproveStatus+" 状态")
       var state = res.data.result.idCardApproveStatus
+      app.globalData.stauts=state;
       var statement=""
     switch(state){
       case 0:

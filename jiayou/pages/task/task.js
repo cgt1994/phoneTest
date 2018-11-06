@@ -66,9 +66,9 @@ Page({
       wx.stopPullDownRefresh()
       wx.hideLoading()
       // if (res.data.result.list.length() > 0) {
-      if (res.data.result.list.length > 0) {
+    
         console.log(res.data.result.list)
-        var list =res.data.result.list
+        var list = res.data.result.list
         var last = res.data.result.list.length >= res.data.result.total
         that.setData({
           items: list,
@@ -76,9 +76,7 @@ Page({
 
         })
         console.log(that.data.items.length + "---")
-      } else {
-
-      }
+    
     }, function(res) {
       wx.hideLoading()
       wx.stopPullDownRefresh()
@@ -113,14 +111,21 @@ Page({
 
   },
   pickOrder: function(e) {
+    var status = getApp().globalData.stauts
+    if (status != 2) {
+      wx.showToast({
+        icon: "none",
+        title: '先要通过审核才可接单!',
+      })
+      return
+    }
     var item = e.currentTarget.dataset.info;
-
     var util = require("../../utils/network.js");
     var params = new Object()
     var item = e.currentTarget.dataset.info;
     params.orderNum = item.orderNum
     // 接单
-    params.operateCode = 3
+    params.operateCode = 1
     util.requestBase("/driver/order/operate", params, function(res) {
       wx.showToast({
         title: '接单成功!',
