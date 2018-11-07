@@ -119,7 +119,7 @@ Page({
     }
     var parms=new Object()
     parms.operateCode=3;
-    parms.orderCompleteUrl=orderUrl
+    parms.completeUrl=orderUrl
     parms.orderNum = order.orderNum
     wx.showLoading({
       title: '正在提交',
