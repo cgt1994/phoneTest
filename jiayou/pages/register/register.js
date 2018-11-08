@@ -1,4 +1,5 @@
 // pages/register.js
+var toastUtil = require("../../utils/util.js");
 Page({
 
   /**
@@ -20,7 +21,8 @@ Page({
     address: "",
     contactphone: "",
     disabled: true,
-    verifyabled:false,
+    verifyabled: false,
+    car: ""
 
   },
 
@@ -62,6 +64,9 @@ Page({
   inputPhoneNumber: function(e) {
     this.data.phoneNumber = e.detail.value
   },
+  inputCar: function(e) {
+    this.data.car = e.detail.value
+  },
   // inputPassword: function (e) {
   //   this.data.password = e.detail.value
   // },
@@ -80,8 +85,8 @@ Page({
     this.data.contactphone = e.detail.value
   },
   getVerfiyCode: function(e) {
-      var that=this;
-    
+    var that = this;
+
     if (this.data.phoneNumber.length < 11) {
       wx.showToast({
         icon: 'none',
@@ -107,7 +112,7 @@ Page({
           title: '发送成功',
         })
       }
-    },function(res){
+    }, function(res) {
       that.setData({
         verifyabled: false
       })
@@ -118,52 +123,63 @@ Page({
     })
 
   },
-  autoLogin:function(){
+  autoLogin: function() {
     var data = getApp().globalData
     var util = require("../../utils/network.js");
     wx.showLoading({
       title: '正在登陆中',
       mask: true,
-      success: function (res) { },
-      fail: function (res) { },
-      complete: function (res) { },
+      success: function(res) {},
+      fail: function(res) {},
+      complete: function(res) {},
     })
     wx.login({
       //获取code
-      success: function (login) {
+      success: function(login) {
         var jscode = login.code //返回code
         console.log(jscode)
         //写入参数
         var params = new Object()
         params.jsCode = jscode
-        util.requestBase("/wechat/applet/autoLogin", params, function (res) {
-          console.log(res)
-          data.openid = res.data.result.openId
-          data.userInfo = res.data.result
-          data.token = res.data.result.token
-          console.log("请求回来的result是" + data.userInfo)
-          wx.hideLoading()
-          console.log("请求回来的openid是" + data.openid)
+        util.requestBase("/wechat/applet/autoLogin", params, function(res) {
+            console.log(res)
+            data.openid = res.data.result.openId
+            data.userInfo = res.data.result
+            data.token = res.data.result.token
+            console.log("请求回来的result是" + data.userInfo)
+            wx.hideLoading()
+            console.log("请求回来的openid是" + data.openid)
 
-          wx.navigateBack({
-            delta: -1
-          });
-        },
-          function (res) {
+            wx.navigateBack({
+              delta: -1
+            });
+          },
+          function(res) {
             wx.hideLoading()
           })
       }
     })
-  }
-  ,
+  },
   register: function(e) {
-    var that=this;
+    var that = this;
     var util = require("../../utils/network.js");
     //写入参数
     var params = new Object()
-  
+    if (this.data.phoneNumber.length < 11) {
+      toastUtil.showToast("手机号长度不能小于11位")
+      return
+    }
+    if (this.data.car.length < 2) {
+      toastUtil.showToast("必须正确填写车型")
+      return
+    }
+    if (this.data.verifyCode.length != 6) {
+      toastUtil.showToast("验证码必须为6位")
+      return
+    }
     if (this.data.myType == 'driver') {
       params.entryTelephone = this.data.phoneNumber
+      params.vehicleModel = this.data.car
       params.smsVerifyCode = "888888"
       util.requestBase("/driver/doRegistry", params, function(res) {
         console.log(res + " ****" + (res.data.status == 0))

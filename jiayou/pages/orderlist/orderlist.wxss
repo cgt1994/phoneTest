@@ -348,11 +348,22 @@ tableViewCellStyle {
   align-items: center;
 }
 
-.state_text {
+.state_text .orange {
+}
+
+.orange {
   color: darkorange;
   border: solid darkorange 1px;
   font-size: 14px;
   border-radius: 5px;
-  border-spacing: 2px;
+  border-spacing: 4px;
+  margin-left: 20rpx;
+}
+.red {
+  color: rgb(199, 50, 45);
+  border: solid rgb(199, 50, 45) 1px;
+  font-size: 14px;
+  border-radius: 5px;
+  border-spacing: 4px;
   margin-left: 20rpx;
 }

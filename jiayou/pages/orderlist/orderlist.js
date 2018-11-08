@@ -6,7 +6,8 @@ Page({
    */
   data: {
     items: null,
-    state:"待处理"
+    state:"待处理",
+    stateStyle:"orange"
   },
 
   /**
@@ -28,6 +29,15 @@ Page({
     params.page = 1
     util.requestBase("/driver/order/list", params, function (res) {
       console.log("任务列表长度" + (res.data.result.list.length))
+      for (var index in res.data.result.list) {
+        var item = res.data.result.list[index]
+        item.style ="orange"
+        item.state="待处理"
+        if (item.orderStatus==5){
+          item.style = "red"
+          item.state = "已通过"
+        }
+             }
       if (res.data.result.list.length > 0) {
         console.log(res.data.result.list)
         that.setData({

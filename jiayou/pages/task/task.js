@@ -119,6 +119,7 @@ Page({
       })
       return
     }
+    var that=this;
     var item = e.currentTarget.dataset.info;
     var util = require("../../utils/network.js");
     var params = new Object()
@@ -130,6 +131,7 @@ Page({
       wx.showToast({
         title: '接单成功!',
       })
+      that.loadData()
 
     })
   },

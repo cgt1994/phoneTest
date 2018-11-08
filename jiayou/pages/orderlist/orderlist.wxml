@@ -8,7 +8,7 @@
           <image class="orderImage marginLeft12" src="../../images/dingdan.png"></image>
           <label class="color54 fontSize12">订单编号: {{ info.orderNum }}</label>
           </view>
-          <text class='state_text'>{{state}}</text>
+          <text class='{{info.style}}'>{{info.state}}</text>
         </view>
         <view class="flexItem rowStyle  personInfo" catchtap="goDeatailEvent">
           <view class="flexItem rowStyle marginLeft12 centers">
@@ -55,7 +55,7 @@
             <view class="color54 fontSize12" style='margin-left:20rpx'> {{ info.orderExpectArrivedDateStr }}</view>
           </view>
         </view>
-        <button type='primary' data-info='{{info}}'bindtap='toFinish' >去完成</button>
+        <button type='primary' disabled='{{info.orderStatus!=3}}' data-info='{{info}}'bindtap='toFinish' >去完成</button>
     
       </scroll-view>
     </view>

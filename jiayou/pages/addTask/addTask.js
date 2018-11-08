@@ -84,10 +84,10 @@ Page({
   toLocationClick: function(e) {
     var that = this;
     wx.chooseLocation({
-      success: function (e) {
+      success: function(e) {
         that.setData({
           endName: e.name,
-         endaddress: e.address
+          endaddress: e.address
         })
         that.endLatitude = e.latitude;
         that.endLongitude = e.longitude;
@@ -142,7 +142,7 @@ Page({
     var util = require("../../utils/network.js");
     //写入参数
     var params = new Object()
-    params.startName=this.data.startName
+    params.startName = this.data.startName
     params.startAddress = this.data.startaddress
     params.startLongitude = this.startLongtitude.toString();
     params.startLatitude = this.startLatitude.toString();
@@ -165,6 +165,10 @@ Page({
         wx.showToast({
           icon: 'none',
           title: '提交成功',
+        })
+      
+        wx.navigateBack({
+
         })
       }
     }, function(res) {

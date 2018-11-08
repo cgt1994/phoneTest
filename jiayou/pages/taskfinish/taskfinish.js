@@ -126,6 +126,25 @@ Page({
     })
     util.requestBase("/driver/order/operate", parms,function(res){
       wx.hideLoading()
+      wx.showToast({
+        title:"成功",
+        icon: 'none',
+        duration: 1000
+      })
+      var pages = getCurrentPages();
+      if (pages.length > 1) {
+
+        //上一个页面实例对象
+
+
+        var prePage = pages[pages.length - 2];
+
+        //关键在这里
+
+        prePage.loadData()
+
+
+      }
     })
   }
 })
