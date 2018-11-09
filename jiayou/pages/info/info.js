@@ -40,38 +40,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function() {
-    wx.showLoading({
-      title: '请稍等',
-    })
-    var that=this;
-    util.requestBase('/driver/driverInfo/get',null,function(res){
-      wx.hideLoading()
-      console.log(res.data.result.idCardApproveStatus+" 状态")
-      var state = res.data.result.idCardApproveStatus
-      app.globalData.stauts=state;
-      var statement=""
-    switch(state){
-      case 0:
-        statement ="待提交"
-        break
-      case 1:
-        statement = "审核中"
-        break
-      case 2:
-        statement = "审核通过"
-        break
-      case 3:
-        statement = "审核拒绝"
-        break
-      
-    }
-      that.setData({
-        state: res.data.result.idCardApproveStatus,
-        statement: statement
-      })
-    },function(res){
-      wx.hideLoading()
-    })
+ 
     var data = getApp().globalData.userInfo
     console.log("data==" + data)
     if (data==null||!data.hasOwnProperty("identity")) {
@@ -91,6 +60,38 @@ Page({
 
     } else {
       if (data.identity == "driver") {
+        wx.showLoading({
+          title: '请稍等',
+        })
+        var that = this;
+        util.requestBase('/driver/driverInfo/get', null, function (res) {
+          wx.hideLoading()
+          console.log(res.data.result.idCardApproveStatus + " 状态")
+          var state = res.data.result.idCardApproveStatus
+          app.globalData.stauts = state;
+          var statement = ""
+          switch (state) {
+            case 0:
+              statement = "待提交"
+              break
+            case 1:
+              statement = "审核中"
+              break
+            case 2:
+              statement = "审核通过"
+              break
+            case 3:
+              statement = "审核拒绝"
+              break
+
+          }
+          that.setData({
+            state: res.data.result.idCardApproveStatus,
+            statement: statement
+          })
+        }, function (res) {
+          wx.hideLoading()
+        })
         myidentity = "司机"
         myphone = data.driverInfoView.telephone
         myrecord = "接单记录"

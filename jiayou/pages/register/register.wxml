@@ -15,7 +15,7 @@
     <view class="model-card" style='margin-top:80rpx'>
       <view class="phone_text" style='margin-left:30rpx'>车型</view>
       <view class="modal-input" style='margin-left:20rpx;;width:550rpx'>
-        <input placeholder-class="input-name" type="number" maxlength="13" bindinput="inputCar" class="input" placeholder="请输入车型"></input>
+        <input placeholder-class="input-name"  maxlength="13" bindinput="inputCar" class="input" placeholder="请输入车型"></input>
       </view>
     </view>
     <!-- <view class="model-card" style='margin-top:80rpx'>

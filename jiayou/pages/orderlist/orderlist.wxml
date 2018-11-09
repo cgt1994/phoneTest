@@ -55,7 +55,7 @@
             <view class="color54 fontSize12" style='margin-left:20rpx'> {{ info.orderExpectArrivedDateStr }}</view>
           </view>
         </view>
-        <button type='primary' disabled='{{info.orderStatus!=3}}' data-info='{{info}}'bindtap='toFinish' >去完成</button>
+        <button type='primary' disabled='{{info.orderStatus!=3&&info.orderStatus!=2}}' data-info='{{info}}'bindtap='toFinish' >去完成</button>
     
       </scroll-view>
     </view>
