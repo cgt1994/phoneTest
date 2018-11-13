@@ -13,13 +13,13 @@
         <view class="flexItem rowStyle  personInfo" catchtap="goDeatailEvent">
           <view class="flexItem rowStyle marginLeft12 centers">
             <view class="color54 fontSize12">出发地 :</view>
-            <view style='margin-left:20rpx'> {{ info.startAddress }}</view>
+            <view class="fontSize12"style='margin-left:20rpx'> {{ info.startAddress }}</view>
           </view>
         </view>
         <view class="flexItem rowStyle  personInfo" catchtap="goDeatailEvent">
           <view class="flexItem rowStyle marginLeft12 centers">
             <view class="color54 fontSize12">目的地 :</view>
-            <view style='margin-left:20rpx'> {{ info.endAddress }} </view>
+            <view class="fontSize12" style='margin-left:20rpx'> {{ info.endAddress }} </view>
           </view>
         </view>
         <view class="flexItem rowStyle  personInfo" catchtap="goDeatailEvent">
@@ -55,7 +55,7 @@
             <view class="color54 fontSize12" style='margin-left:20rpx'> {{ info.orderExpectArrivedDateStr }}</view>
           </view>
         </view>
-        <button type='primary' disabled='{{info.orderStatus!=3}}' data-info='{{info}}'bindtap='toFinish' >去完成</button>
+        <button type='primary' disabled='{{info.orderStatus!=3&&info.orderStatus!=7&&info.orderStatus!=2}}' data-info='{{info}}'bindtap='toFinish' >{{info.go}}</button>
     
       </scroll-view>
     </view>
