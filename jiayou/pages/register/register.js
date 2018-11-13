@@ -165,19 +165,23 @@ Page({
     var util = require("../../utils/network.js");
     //写入参数
     var params = new Object()
-    if (this.data.phoneNumber.length < 11) {
-      toastUtil.showToast("手机号长度不能小于11位")
-      return
-    }
-    if (this.data.car.length < 2) {
-      toastUtil.showToast("必须正确填写车型")
-      return
-    }
-    if (this.data.verifyCode.length != 6) {
-      toastUtil.showToast("验证码必须为6位")
-      return
-    }
+
+   
+   
+   
     if (this.data.myType == 'driver') {
+      if (this.data.phoneNumber.length < 11) {
+        toastUtil.showToast("手机号长度不能小于11位")
+        return
+      }
+      if (this.data.car.length < 2) {
+        toastUtil.showToast("必须正确填写车型")
+        return
+      }
+      if (this.data.verifyCode.length != 6) {
+        toastUtil.showToast("验证码必须为6位")
+        return
+      }
       params.entryTelephone = this.data.phoneNumber
       params.vehicleModel = this.data.car
       params.smsVerifyCode = "888888"
@@ -188,6 +192,7 @@ Page({
         }
       })
     } else {
+   
       params.supplierName = this.data.supplier
       params.telephone = this.data.contactphone
       params.supplierAddress = this.data.address
