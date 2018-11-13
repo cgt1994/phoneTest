@@ -367,3 +367,11 @@ tableViewCellStyle {
   border-spacing: 4px;
   margin-left: 20rpx;
 }
+.green {
+  color: #439057;
+  border: solid#439057 1px;
+  font-size: 14px;
+  border-radius: 5px;
+  border-spacing: 4px;
+  margin-left: 20rpx;
+}

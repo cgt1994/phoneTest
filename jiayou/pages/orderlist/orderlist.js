@@ -6,47 +6,58 @@ Page({
    */
   data: {
     items: null,
-    state:"待处理",
-    stateStyle:"orange"
+    state: "待处理",
+    stateStyle: "orange",
+    go:"去完成"
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
+  onLoad: function(options) {
 
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady: function () {
-    var that=this;
+  onReady: function() {
+    var that = this;
     var util = require("../../utils/network.js");
     //写入参数
     var params = new Object()
     params.pageSize = 1000
     params.page = 1
-    util.requestBase("/driver/order/list", params, function (res) {
+    util.requestBase("/driver/order/list", params, function(res) {
       console.log("任务列表长度" + (res.data.result.list.length))
+        
       for (var index in res.data.result.list) {
+
+        
         var item = res.data.result.list[index]
-        item.style ="orange"
-        item.state="待处理"
-        if (item.orderStatus==5){
-          item.style = "red"
+        item.go = "去完成"
+        item.style = "orange"
+        item.state = "待处理"
+        if (item.orderStatus == 5) {
+          item.style = "green"
           item.state = "已通过"
+        } else if (item.orderStatus == 7) {
+          item.style = "red"
+          item.state = "已拒绝"
+          item.go ="再次审核"
         }
-             }
+      }
+
       if (res.data.result.list.length > 0) {
         console.log(res.data.result.list)
         that.setData({
-          items: res.data.result.list
+          items: res.data.result.list,
+    
         })
         console.log(that.data.items.length + "---")
-      }else{
+      } else {
         wx.showToast({
-          icon:null,
+          icon: null,
           title: '暂时没有数据',
         })
       }
@@ -56,48 +67,48 @@ Page({
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function () {
+  onShow: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面隐藏
    */
-  onHide: function () {
+  onHide: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
-  onUnload: function () {
+  onUnload: function() {
 
   },
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
-  onPullDownRefresh: function () {
+  onPullDownRefresh: function() {
 
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
-  onReachBottom: function () {
+  onReachBottom: function() {
 
   },
 
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function () {
+  onShareAppMessage: function() {
 
   },
-  toFinish:function(e){
+  toFinish: function(e) {
     var item = e.currentTarget.dataset.info;
     wx.navigateTo({
-      url: '../taskfinish/taskfinish?info='+ JSON.stringify(item),
+      url: '../taskfinish/taskfinish?info=' + JSON.stringify(item),
     })
   }
 })
