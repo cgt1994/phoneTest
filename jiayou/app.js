@@ -33,6 +33,8 @@ App({
               that.globalData.openid = res.data.result.openId
               that.globalData.userInfo = res.data.result
               that.globalData.token=res.data.result.token
+            that.globalData.stauts = res.data.result.driverInfoView.idCardStatus
+            console.log("请求回来的stauts是" + res.data.result.driverInfoView.idCardStatus)
               console.log("请求回来的result是" + that.globalData.userInfo)
               wx.hideLoading()
               console.log("请求回来的openid是" + that.globalData.openid)
