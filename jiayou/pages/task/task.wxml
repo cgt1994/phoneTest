@@ -38,6 +38,13 @@
             <view style='margin-left:20rpx'> {{ info.goodsDesc }}</view>
           </view>
         </view>
+          
+        <view class="flexItem rowStyle  personInfo" catchtap="goDeatailEvent">
+          <view class="flexItem rowStyle marginLeft12 centers">
+            <view class="color54 fontSize12">重量:</view>
+            <view style='margin-left:20rpx'> {{ info.weight }}</view>
+          </view>
+        </view>
         <view wx:if="{{info.orderExpectDeliveryDateStr!=null}}" class="flexItem rowStyle  personInfo" catchtap="goDeatailEvent">
           <view class="flexItem rowStyle marginLeft12  centers">
             <view class="color54 fontSize12">期望送货时间:</view>
