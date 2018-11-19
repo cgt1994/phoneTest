@@ -66,17 +66,17 @@ Page({
       wx.stopPullDownRefresh()
       wx.hideLoading()
       // if (res.data.result.list.length() > 0) {
-    
-        console.log(res.data.result.list)
-        var list = res.data.result.list
-        var last = res.data.result.list.length >= res.data.result.total
-        that.setData({
-          items: list,
-          isLast: last
 
-        })
-        console.log(that.data.items.length + "---")
-    
+      console.log(res.data.result.list)
+      var list = res.data.result.list
+      var last = res.data.result.list.length >= res.data.result.total
+      that.setData({
+        items: list,
+        isLast: last
+
+      })
+      console.log(that.data.items.length + "---")
+
     }, function(res) {
       wx.hideLoading()
       wx.stopPullDownRefresh()
@@ -119,7 +119,7 @@ Page({
       })
       return
     }
-    var that=this;
+    var that = this;
     var item = e.currentTarget.dataset.info;
     var util = require("../../utils/network.js");
     var params = new Object()
@@ -131,7 +131,11 @@ Page({
       wx.showToast({
         title: '接单成功!',
       })
-      that.loadData()
+      // 延迟调用
+      setTimeout(function() {
+        console.log("延迟调用============")
+        that.loadData()
+      }, 1000)
 
     })
   },
