@@ -13,7 +13,8 @@
     "pages/orderlist/orderlist",
     "pages/map/map",
     "pages/deliverinfo/deliverinfo",
-    "pages/taskfinish/taskfinish"
+    "pages/taskfinish/taskfinish",
+    "pages/web/web"
   ],
   "window": {
     "backgroundTextStyle": "drak",

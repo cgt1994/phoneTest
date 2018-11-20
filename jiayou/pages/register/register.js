@@ -160,6 +160,12 @@ Page({
       }
     })
   },
+  jumpToProtocal:function(e){
+    wx.navigateTo({
+      url: '../web/web',
+    })
+  },
+
   register: function(e) {
     var that = this;
     var util = require("../../utils/network.js");
