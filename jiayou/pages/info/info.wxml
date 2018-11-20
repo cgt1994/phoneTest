@@ -67,7 +67,7 @@
           </navigator>
 
 
-          <navigator url="/pages/register/register" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+          <!-- <navigator  class="weui-cell weui-cell_access" hover-class="weui-cell_active">
             <view class="weui-cell__hd">
               <image src="/images/edit.png" style="margin-right: 5px;vertical-align: middle;width:20px; height: 20px;"></image>
             </view>
@@ -75,7 +75,7 @@
             <view class="weui-cell__ft weui-cell__ft_in-access">
               <view class="weui-badge" wx:if="{{appointmentCount>0}}" style="margin-left: 5px;">{{appointmentCount}}</view>
             </view>
-          </navigator>
+          </navigator> -->
 
         </view>
       </view>
