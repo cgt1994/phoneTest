@@ -1,5 +1,6 @@
 // pages/register.js
 var toastUtil = require("../../utils/util.js");
+var agree;
 Page({
 
   /**
@@ -160,15 +161,30 @@ Page({
       }
     })
   },
+  jumpToProtocal: function(e) {
+    var url = "";
+    if (this.data.myType = "driver") {
+      url = "https://gateway.xiaofeiupup.top/driver/registry/protocol"
+    } else {
+      url = "https://gateway.xiaofeiupup.top/supplier/registry/protocol"
+    }
+    wx.navigateTo({
+      url: '../web/web?url=' + url,
+    })
+  },
+  checkChange: function(e) {
+    console.log("checkFac" + e.detail.value)
+    agree = e.detail.value;
+  },
   register: function(e) {
     var that = this;
     var util = require("../../utils/network.js");
     //写入参数
     var params = new Object()
 
-   
-   
-   
+
+
+
     if (this.data.myType == 'driver') {
       if (this.data.phoneNumber.length < 11) {
         toastUtil.showToast("手机号长度不能小于11位")
@@ -182,6 +198,10 @@ Page({
         toastUtil.showToast("验证码必须为6位")
         return
       }
+      if (agree!="driver") {
+        toastUtil.showToast("请先阅读协议并勾选")
+        return
+      }
       params.entryTelephone = this.data.phoneNumber
       params.vehicleModel = this.data.car
       params.smsVerifyCode = "888888"
@@ -192,7 +212,10 @@ Page({
         }
       })
     } else {
-   
+      if (agree != "supplier") {
+        toastUtil.showToast("请先阅读协议并勾选")
+        return
+      }
       params.supplierName = this.data.supplier
       params.telephone = this.data.contactphone
       params.supplierAddress = this.data.address

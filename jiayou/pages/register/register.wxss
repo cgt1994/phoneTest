@@ -1,17 +1,19 @@
 /* pages/register.wxss */
-.radio-group{
+
+.radio-group {
   margin-top: 50rpx;
   display: flex;
   flex-direction: row;
-  justify-content: space-around
-  }
-  .model-card{
+  justify-content: space-around;
+}
+
+.model-card {
   width: 100%;
   display: flex;
   flex-direction: row;
-  align-items: center
-
+  align-items: center;
 }
+
 .modal-input {
   padding: 10rpx;
   width: 80%;
@@ -21,4 +23,15 @@
   border: 2rpx solid #ddd;
   border-radius: 4rpx;
   font-size: 28rpx;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+  margin-left: 10rpx;
+  margin-top: 50rpx;
+}
+
+.green {
+  color: green;
 }
