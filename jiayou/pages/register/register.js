@@ -1,6 +1,7 @@
 // pages/register.js
 var toastUtil = require("../../utils/util.js");
 var agree;
+var interval=null
 Page({
 
   /**
@@ -23,7 +24,10 @@ Page({
     contactphone: "",
     disabled: true,
     verifyabled: false,
-    car: ""
+    car: "",
+    time:"获取验证码",
+    currentTime: 61,
+    setInter:""
 
   },
 
@@ -87,7 +91,7 @@ Page({
   },
   getVerfiyCode: function(e) {
     var that = this;
-
+ 
     if (this.data.phoneNumber.length < 11) {
       wx.showToast({
         icon: 'none',
@@ -95,18 +99,31 @@ Page({
       })
       return
     }
-    this.setData({
+    that.setData({
       verifyabled: true
     })
+    var currentTime = that.data.currentTime
+    that.data.setInter = setInterval(function () {
+      currentTime--;
+      that.setData({
+        time: currentTime + '秒'
+      })
+      if (currentTime <= 0) {
+       clearInterval(that.data.setInter)
+        that.setData({
+          time: '重新发送',
+          currentTime: 61,
+          verifyabled: false
+        })
+      }
+    }, 1000)
     var util = require("../../utils/network.js");
     //写入参数
     var params = new Object()
     params.telephone = this.data.phoneNumber
     util.requestBase("/driver/registryCode", params, function(res) {
       console.log(res)
-      that.setData({
-        verifyabled: false
-      })
+  
       if (res.data.status == 0) {
         wx.showToast({
           icon: 'none',
@@ -114,9 +131,7 @@ Page({
         })
       }
     }, function(res) {
-      that.setData({
-        verifyabled: false
-      })
+    
       wx.showToast({
         icon: 'none',
         title: '发送失败',
@@ -124,6 +139,27 @@ Page({
     })
 
   },
+  countDown: function (){
+  
+    if (currentTime <= 0) {
+      clearInterval(that.data.setInter)
+      that.setData({
+        time: '重新发送',
+        currentTime: 61,
+        verifyabled: false
+      })
+    }else{
+      setTimeout(function () {
+        currentTime--;
+        that.setData({
+          time: currentTime + '秒'
+        })
+        countDown();
+      }, 1000);
+
+    }
+  }
+  ,
   autoLogin: function() {
     var data = getApp().globalData
     var util = require("../../utils/network.js");
@@ -204,7 +240,7 @@ Page({
       }
       params.entryTelephone = this.data.phoneNumber
       params.vehicleModel = this.data.car
-      params.smsVerifyCode = "888888"
+      params.smsVerifyCode = this.data.verifyCode
       util.requestBase("/driver/doRegistry", params, function(res) {
         console.log(res + " ****" + (res.data.status == 0))
         if (res.data.status == 0) {

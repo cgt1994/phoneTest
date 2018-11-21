@@ -29,7 +29,8 @@ Page({
   },
   jumpTorecord:function(e){
     var data = getApp().globalData.userInfo
-      if(data.identify=="driver"){
+
+    if (data.identity=="driver"){
         wx.navigateTo({
           url: '../orderlist/orderlist',
         })
@@ -53,7 +54,7 @@ Page({
   onShow: function() {
  
     var data = getApp().globalData.userInfo
-    console.log("data==" + data)
+    console.log("data1111==" + data.identity)
     if (data==null||!data.hasOwnProperty("identity")) {
      wx.showToast({
        title: '数据异常',

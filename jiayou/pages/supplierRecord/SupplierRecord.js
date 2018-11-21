@@ -34,7 +34,7 @@ Page({
     var params = new Object()
     params.pageSize = 1000
     params.page = 1
-    util.requestBase("/supplier/subOrder/list", params, function (res) {
+    util.requestBase("/supplier/order/list", params, function (res) {
       console.log("商家发单记录" + (res.data.result.list.length))
 
      

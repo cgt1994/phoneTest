@@ -26,11 +26,11 @@
     </view> -->
 
     <view class="model-card" style='margin-top:80rpx'>
-      <view class="phone_text" style='margin-left:30rpx'>验证码</view>
+      <view  class="phone_text" style='margin-left:30rpx'>验证码</view>
       <view class="modal-input" style='margin-left:20rpx;width:200rpx'>
         <input placeholder-class="input-name" type="number" maxlength="6" bindinput="intputVerifyCode" class="input" placeholder="请输入验证码"></input>
       </view>
-      <button disabled='{{verifyabled}}' bindtap='getVerfiyCode'>获取验证码</button>+
+      <button disabled='{{verifyabled}}' bindtap='getVerfiyCode'>{{time}}</button>
 
     </view>
     <view class='row'>

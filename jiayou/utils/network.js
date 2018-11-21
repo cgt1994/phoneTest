@@ -5,7 +5,7 @@ function requestBase(api, data, success, fail) {
   var openid = appData.openid
   var mytoken = appData.token
 
-  console.log("open是" + openid)
+  console.log("open是" + openid+mytoken)
   console.log("请求了" + api)
   wx.request({
     url: appData.baseUrl + api,
@@ -68,8 +68,20 @@ function uploadPic(path, strtype,filepath, success, failres) {
     },
     success: function(res) {
       wx.hideLoading()
-      success(JSON.parse(res.data))
-      console.log(res)
+      var data=JSON.parse(res.data)
+      if (data.status == 0) {
+        success(data);
+      } else {
+        wx.hideLoading()
+        wx.showToast({
+          title: res.data.errMsg,
+          icon: 'none',
+          duration: 1000
+        })
+        fail(res);
+        console.log(res)
+      }
+ 
     }
     ,fail:function(res){
       wx.hideLoading()
