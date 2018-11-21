@@ -27,7 +27,18 @@ Page({
   onLoad: function(options) {
 
   },
-
+  jumpTorecord:function(e){
+    var data = getApp().globalData.userInfo
+      if(data.identify=="driver"){
+        wx.navigateTo({
+          url: '../orderlist/orderlist',
+        })
+      }else{
+        wx.navigateTo({
+          url: '../supplierRecord/SupplierRecord',
+        })
+      }
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

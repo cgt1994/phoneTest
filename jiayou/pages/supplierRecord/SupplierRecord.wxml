@@ -3,17 +3,17 @@
   <view class="tab_con flexItem rowStyle">
     <view class="view1 width20" bindtouchstart="catchtouchstart" bindtouchend="catchtouchend">
       <scroll-view class="tableView" scroll-y="true" wx:if="{{items.length>0}}" wx:for="{{ items }}" wx:for-item="info">
-        <view class="flexItem rowStyle tableViewCellHeader marginTop10" catchtap="goDeatailEvent">
+        <view class="flexItem rowStyle tableViewCellHeader marginTop10" data-id='{{info.id}}' bindtap="goDetailOrder">
           <view>
-          <image class="orderImage marginLeft12" src="../../images/dingdan.png"></image>
-          <label class="color54 fontSize12">订单编号: {{ info.orderNum }}</label>
+            <image class="orderImage marginLeft12" src="../../images/dingdan.png"></image>
+            <label class="color54 fontSize12">订单编号: {{ info.orderNum }}</label>
           </view>
           <text class='{{info.style}}'>{{info.state}}</text>
         </view>
         <view class="flexItem rowStyle  personInfo" catchtap="goDeatailEvent">
           <view class="flexItem rowStyle marginLeft12 centers">
             <view class="color54 fontSize12">出发地 :</view>
-            <view class="fontSize12"style='margin-left:20rpx'> {{ info.startAddress }}</view>
+            <view class="fontSize12" style='margin-left:20rpx'> {{ info.startAddress }}</view>
           </view>
         </view>
         <view class="flexItem rowStyle  personInfo" catchtap="goDeatailEvent">
@@ -55,8 +55,14 @@
             <view class="color54 fontSize12" style='margin-left:20rpx'> {{ info.orderExpectArrivedDateStr }}</view>
           </view>
         </view>
-        <button type='primary' disabled='{{info.orderStatus!=3&&info.orderStatus!=7&&info.orderStatus!=2}}' data-info='{{info}}'bindtap='toFinish' >{{info.go}}</button>
-    
+        <view class='flexItem  rowStyle' style='margin-right:20rpx;justify-content:flex-end'>
+          <view class="color54 fontSize12">订单总重量:</view>
+          <view class="color54 fontSize12"> {{ info.weight }}</view>
+          <view class="color54 fontSize12" style='margin-left:20rpx'>剩余重量:</view>
+          <view class="color54 fontSize12"> {{ info.weightSurplus }}</view>
+        </view>
+        <button type='primary' disabled='{{info.orderStatus!=3&&info.orderStatus!=7&&info.orderStatus!=2}}' data-info='{{info}}' bindtap='toFinish'>{{info.go}}</button>
+
       </scroll-view>
     </view>
   </view>

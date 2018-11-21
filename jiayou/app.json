@@ -14,7 +14,9 @@
     "pages/map/map",
     "pages/deliverinfo/deliverinfo",
     "pages/taskfinish/taskfinish",
-    "pages/web/web"
+    "pages/web/web",
+    "pages/supplierRecord/SupplierRecord",
+    "pages/supplierOrderDetail/supplierOrderDetail"
   ],
   "window": {
     "backgroundTextStyle": "drak",
