@@ -375,3 +375,11 @@ tableViewCellStyle {
   border-spacing: 4px;
   margin-left: 20rpx;
 }
+.blue {
+  color: #4292d3b4;
+  border: solid#4292d3b4 1px;
+  font-size: 14px;
+  border-radius: 5px;
+  border-spacing: 4px;
+  margin-left: 20rpx;
+}

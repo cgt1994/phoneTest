@@ -167,9 +167,9 @@ Page({
           title: '提交成功',
         })
       
-        // wx.navigateBack({
+        wx.navigateBack({
 
-        // })
+        })
       }
     }, function(res) {
       wx.showToast({

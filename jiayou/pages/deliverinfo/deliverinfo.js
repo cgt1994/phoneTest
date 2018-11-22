@@ -235,6 +235,9 @@ Page({
     params.idCardImgBackUrl = url2;
     params.driverLicenseImgUrlFirst = url3;
     params.driverLicenseImgUrlSecond = url4;
+    wx.showLoading({
+      title: '正在上传中',
+    })
     util.requestBase("/driver/approve/apply", params, function(e) {
       wx.showToast({
         title: '提交成功',

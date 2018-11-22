@@ -35,7 +35,7 @@ Page({
     if (data.identity == 'driver') {
       mytype = 2
       this.loadData()
-    } else if (data.identity = 'supplier') {
+    } else if (data.identity == 'supplier') {
       mytype = 1
 
     }

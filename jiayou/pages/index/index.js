@@ -38,5 +38,8 @@ Page({
     wx.navigateTo({
       url: '../map/map',
     })
+  },
+  onShareAppMessage: function () {
+
   }
 })

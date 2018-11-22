@@ -1,7 +1,8 @@
 // pages/taskfinish/taskfinish.js
 var util = require("../../utils/network.js");
 var orderUrl="";
-var order;
+
+var orderNumber;
 Page({
 
   /**
@@ -18,14 +19,17 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-    var item = JSON.parse(options.info)
-    order=item
+    console.log("跳转后")
+    console.log(options)
+    orderNumber = options.orderNumber
+   
+ 
     this.setData({
-      startName: item.startName,
-      endName: item.endName,
-      gooddec: item.goodsDesc
+      startName: options.startName,
+      endName: options.endName,
+      gooddec: options.goodDes
     })
-    console.log(item)
+   
   },
 
   /**
@@ -120,7 +124,7 @@ Page({
     var parms=new Object()
     parms.operateCode=3;
     parms.completeUrl=orderUrl
-    parms.orderNum = order.orderNum
+    parms.orderNum = orderNumber
     wx.showLoading({
       title: '正在提交',
     })
@@ -130,6 +134,9 @@ Page({
         title:"成功",
         icon: 'none',
         duration: 1000
+      })
+      wx.navigateBack({
+
       })
       var pages = getCurrentPages();
       if (pages.length > 1) {

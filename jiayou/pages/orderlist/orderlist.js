@@ -1,4 +1,5 @@
 // pages/orderlist/orderlist.js
+
 Page({
 
   /**
@@ -17,34 +18,35 @@ Page({
   onLoad: function(options) {
 
   },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function() {
+  loadData:function(){
     var that = this;
     var util = require("../../utils/network.js");
     //写入参数
     var params = new Object()
     params.pageSize = 1000
     params.page = 1
-    util.requestBase("/driver/order/list", params, function(res) {
+    util.requestBase("/driver/order/list", params, function (res) {
       console.log("任务列表长度" + (res.data.result.list.length))
-        
+
       for (var index in res.data.result.list) {
 
-        
+
         var item = res.data.result.list[index]
         item.go = "去完成"
         item.style = "orange"
         item.state = "待处理"
         if (item.orderStatus == 5) {
           item.style = "green"
+          item.state = "已提交,待审核"
+        } else if (item.orderStatus == 6) {
+          item.style = "blue"
           item.state = "已通过"
-        } else if (item.orderStatus == 7) {
+          item.go = "订单已完成"
+        }
+         else if (item.orderStatus == 7) {
           item.style = "red"
           item.state = "已拒绝"
-          item.go ="再次审核"
+          item.go = "再次审核"
         }
       }
 
@@ -52,7 +54,7 @@ Page({
         console.log(res.data.result.list)
         that.setData({
           items: res.data.result.list,
-    
+
         })
         console.log(that.data.items.length + "---")
       } else {
@@ -62,6 +64,12 @@ Page({
         })
       }
     })
+  },
+  /**
+   * 生命周期函数--监听页面初次渲染完成
+   */
+  onReady: function() {
+   this.loadData()
   },
 
   /**
@@ -107,8 +115,10 @@ Page({
   },
   toFinish: function(e) {
     var item = e.currentTarget.dataset.info;
+    console.log("跳转前")
+    console.log(item)
     wx.navigateTo({
-      url: '../taskfinish/taskfinish?info=' + JSON.stringify(item),
+      url: '../taskfinish/taskfinish?orderNumber=' + item.orderNum + "&startName=" + item.startName + "&endName=" + item.endName + "&goodDes=" + item.goodsDesc,
     })
   }
 })
