@@ -8,11 +8,11 @@
         </swiper-item>
       </block>
     </swiper> -->
-
-    <view style='padding-top:20rpx;'>
-      <text decode="true" class='text'>&nbsp;&nbsp;顺顺运作为一个新型的物流信息平台，我们的宗旨是为商家与司机服务，让更多的朋友体验到信息时代给我们生活工作带来的方便快捷。在这里，你可以轻松联系到司机，货源等各种信息。将广大公司及司机通过我们的努力组建一个完整的网络信息网，拒绝没车用，拒绝闲置车，充分利用您手上的资源信息，让公司扩大业务量和办事效率，让司机可以选择货物选择路线回头不空车。希望能在我们的努力下共同发展，互惠互利，携手未来。</text>
-    </view>
-
+    <navigator url="../deliverinfo/deliverinfo"  hover-class="other-navigator-hover">
+      <view style='padding-top:20rpx;'>
+        <text decode="true" class='text'>&nbsp;&nbsp;顺顺运作为一个新型的物流信息平台，我们的宗旨是为商家与司机服务，让更多的朋友体验到信息时代给我们生活工作带来的方便快捷。在这里，你可以轻松联系到司机，货源等各种信息。将广大公司及司机通过我们的努力组建一个完整的网络信息网，拒绝没车用，拒绝闲置车，充分利用您手上的资源信息，让公司扩大业务量和办事效率，让司机可以选择货物选择路线回头不空车。希望能在我们的努力下共同发展，互惠互利，携手未来。</text>
+      </view>
+    </navigator>
   </scroll-view>
   <view>
     <loading hidden="{{hiddenLoading}}">请稍候</loading>
